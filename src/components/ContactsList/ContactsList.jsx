@@ -3,11 +3,16 @@ import ContactItem from "../ContactItem/ContactItem";
 
 const ContactsList = () => {
   const contacts = useSelector((state) => state.contacts);
+  const filter = useSelector((state) => state.filter);
 
   return (
       <ul>
         {contacts.map((contact) => {
-          return <ContactItem key={contact.id} contact={contact}/>
+          if (contact.name.toLowerCase().includes(filter)) {
+            return <ContactItem key={contact.id} contact={contact}/>
+          }
+
+          return null;
         })}
       </ul>
   );

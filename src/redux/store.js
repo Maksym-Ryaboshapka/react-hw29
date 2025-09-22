@@ -1,6 +1,13 @@
-import {createStore} from "redux";
-import reducer from "./reducer";
+import {combineReducers, createStore} from "redux";
 
-const store = createStore(reducer);
+import contactsReducer from "./contacts/reducer";
+import filterReducer from "./fiter/reducer";
+
+const rootReducer = combineReducers({
+  contacts: contactsReducer,
+  filter: filterReducer,
+});
+
+const store = createStore(rootReducer);
 
 export default store;
